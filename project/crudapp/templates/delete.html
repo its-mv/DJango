@@ -1,0 +1,9 @@
+<html>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h3>Are you sure to delete - {{data.item}} </h3>
+        <input type="submit" value="Yes"  />
+      </form> 
+</body>
+</html>

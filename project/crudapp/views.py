@@ -19,3 +19,27 @@ def demo(request):
     
     List = [1,2,3,4,5]
     return render(request, 'demo.html', {"Mahi":name, "No":no, "Array": List})
+
+
+
+def delete(request, id):
+    data = Item.objects.get(id=id)
+    print(data)
+    if request.method == "POST":
+        data.delete()
+        return redirect('list')
+    elif request.method == "GET":
+        return render(request,'delete.html', {'data':data})
+    
+    
+def update(request, id):
+    data = Item.objects.get(id=id)
+    if request.method == "POST":
+        data.item = request.POST['item']
+        data.des = request.POST['des']
+        data.save()
+        return redirect('list')
+    return render(request, 'update.html', {'data':data})
+    
+
+
